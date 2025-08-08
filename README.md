@@ -459,6 +459,58 @@ function scheduler() {
   ...
 }
 
+# 1. Clone or unzip the project wherever you want
+git clone https://github.com/yourname/rhythm-trainer.git
+cd rhythm-trainer
+
+# (If you only have the files locally, just `cd` into that folder.)
+
+python -m venv venv
+source venv/bin/activate          # macOS / Linux
+# or
+.\venv\Scripts\activate           # Windows PowerShell
+
+pip install -r requirements.txt
+
+fastapi
+uvicorn[standard]
+aiofiles
+
+samples/
+├── kick.wav
+├── snare.wav
+└── shaker.wav
+
+
+https://github.com/klevron/audioclips/raw/main/kick.wav
+https://github.com/klevron/audioclips/raw/main/snare.wav
+https://github.com/klevron/audioclips/raw/main/shaker.wav )
+
+uvicorn main:app --reload --host 0.0.0.0 --port 8080
+
+You should see:
+INFO:     Uvicorn running on http://0.0.0.0:8080
+────────────────────────
+6. Open your browser
+────────────────────────
+Visit http://localhost:8080/static/
+(or **http://localhost:8080**—FastAPI will redirect to the static page).
+That’s it—hit ▶ and start practicing rhythms.
+────────────────────────
+7. (Optional) Mobile / LAN sharing
+────────────────────────
+Find your computer’s LAN IP (e.g. 192.168.1.42) and browse to
+http://192.168.1.42:8080/static/ from any phone on the same network.
+────────────────────────
+8. Stop the server
+────────────────────────
+Ctrl-C in the terminal; then deactivate to exit the virtual-env.
+────────────────────────
+Need a one-liner to remember?
+────────────────────────
+
+python -m venv venv && source venv/bin/activate && pip install fastapi uvicorn aiofiles && uvicorn main:app --reload
+
 
 
 
